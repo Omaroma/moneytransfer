@@ -1,3 +1,3 @@
-module moneytransfer
+module github.com/Omaroma/moneytransfer
 
 go 1.23.0

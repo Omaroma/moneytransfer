@@ -1,1 +1,4 @@
-package moneytransfer
+package main
+
+func main() {
+}
