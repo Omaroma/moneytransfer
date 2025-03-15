@@ -71,6 +71,11 @@ func GetUserInfo(c *gin.Context) {
 	}
 
 	user := services.GetUser(userId)
+	if user.Id == "" {
+		c.String(http.StatusNotFound, "user not found")
+		return
+	}
+
 	c.JSON(http.StatusOK, user)
 }
 
