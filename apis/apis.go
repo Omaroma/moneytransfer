@@ -20,8 +20,8 @@ func AddUser(c *gin.Context) {
 		return
 	}
 
-	services.AddUser(userName, userBalance)
-	c.String(http.StatusCreated, "user added successfully")
+	user := services.AddUser(userName, userBalance)
+	c.JSON(http.StatusCreated, user)
 }
 
 func DeleteUser(c *gin.Context) {
@@ -63,6 +63,13 @@ func Transfer(c *gin.Context) {
 	c.String(http.StatusOK, "amount added successfully")
 }
 
-func GetBalance(c *gin.Context) {
-	c.String(200, "balance is: 0")
+func GetUserInfo(c *gin.Context) {
+	userId := c.Query("id")
+	if userId == "" {
+		c.String(http.StatusBadRequest, "you must enter user id")
+		return
+	}
+
+	user := services.GetUser(userId)
+	c.JSON(http.StatusOK, user)
 }

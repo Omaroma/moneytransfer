@@ -14,7 +14,7 @@ func Router() *gin.Engine {
 	router.POST("/addUser", apis.AddUser)
 	router.DELETE("/deleteUser", apis.DeleteUser)
 	router.POST("/transfer", apis.Transfer)
-	router.GET("/getBalance", apis.GetBalance)
+	router.GET("/userInfo", apis.GetUserInfo)
 
 	return router
 }
