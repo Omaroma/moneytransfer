@@ -40,3 +40,7 @@ func (s *SystemUsers) UpdateBalance(userId string, newBalance float64) {
 }
 
 var Users SystemUsers
+
+func InitUserStore() {
+	Users.userStore = make(map[string]User)
+}

@@ -45,3 +45,10 @@ func TransferMoney(from, to string, amount float64) error {
 
 	return nil
 }
+
+func InitUsers() {
+	models.InitUserStore()
+	AddUser("Mark", 100)
+	AddUser("Jane", 50)
+	AddUser("Adam", 0)
+}
