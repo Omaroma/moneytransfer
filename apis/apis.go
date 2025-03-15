@@ -49,7 +49,7 @@ func Transfer(c *gin.Context) {
 	}
 
 	amount, _ := strconv.ParseFloat(c.Query("amount"), 64)
-	if amount == 0 {
+	if amount <= 0 {
 		c.String(http.StatusBadRequest, "please enter transfer amount")
 		return
 	}
