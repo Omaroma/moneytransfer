@@ -25,6 +25,15 @@ func (s *SystemUsers) Get(userId string) User {
 	return s.userStore[userId]
 }
 
+func (s *SystemUsers) GetAllData() (users []User) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	for _, v := range s.userStore {
+		users = append(users, v)
+	}
+	return users
+}
+
 func (s *SystemUsers) Delete(userId string) {
 	s.mu.Lock()
 	defer s.mu.Unlock()

@@ -4,10 +4,15 @@ import (
 	"errors"
 	"github.com/Omaroma/moneytransfer/models"
 	"github.com/google/uuid"
+	"log"
 )
 
 func GetUser(id string) (user models.User) {
 	return models.Users.Get(id)
+}
+
+func GetAllUsers() []models.User {
+	return models.Users.GetAllData()
 }
 
 func AddUser(name string, balance float64) (user models.User) {
@@ -48,7 +53,10 @@ func TransferMoney(from, to string, amount float64) error {
 
 func InitUsers() {
 	models.InitUserStore()
-	AddUser("Mark", 100)
-	AddUser("Jane", 50)
-	AddUser("Adam", 0)
+	userMark := AddUser("Mark", 100)
+	log.Println("created user:", userMark)
+	userJane := AddUser("Jane", 50)
+	log.Println("created user:", userJane)
+	userAdam := AddUser("Adam", 0)
+	log.Println("created user:", userAdam)
 }

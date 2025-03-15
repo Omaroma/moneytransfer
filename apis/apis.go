@@ -73,3 +73,7 @@ func GetUserInfo(c *gin.Context) {
 	user := services.GetUser(userId)
 	c.JSON(http.StatusOK, user)
 }
+
+func GetAllUsers(c *gin.Context) {
+	c.JSON(http.StatusOK, services.GetAllUsers())
+}

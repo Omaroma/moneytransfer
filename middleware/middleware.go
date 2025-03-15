@@ -15,6 +15,7 @@ func Router() *gin.Engine {
 	router.DELETE("/deleteUser", apis.DeleteUser)
 	router.POST("/transfer", apis.Transfer)
 	router.GET("/userInfo", apis.GetUserInfo)
+	router.GET("/allUsers", apis.GetAllUsers)
 
 	return router
 }
