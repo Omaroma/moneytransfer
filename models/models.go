@@ -31,10 +31,12 @@ func (s *SystemUsers) Delete(userId string) {
 	delete(s.userStore, userId)
 }
 
-func (s *SystemUsers) ChangeBalance(userId string, newBalance float64) {
+func (s *SystemUsers) UpdateBalance(userId string, newBalance float64) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	user := s.userStore[userId]
 	user.Balance = newBalance
 	s.userStore[userId] = user
 }
+
+var Users SystemUsers
