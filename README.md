@@ -5,6 +5,8 @@ well as a simple user management.
 ## Table of contents
 * [Run Project](#Run)
 * [Use the project](#usage)
+* [Test Project](#Test)  
+* [Concurrency Implemented](#Concurrency)
 
 ## Run
 To run this project, open git bash or cmd, then get into this project's directory using
@@ -90,4 +92,14 @@ Response Sample
 ```
 amount added successfully
 ```
+## Test
+To run this project, open git bash or cmd, then get into this project's directory using
+```
+$ cd services
+$ go test
+```
 
+## Concurrency
+**Locking and Unlocking**:  
+Before any method (add, get or delete user) executes, uses mutex to ensure no other method can access userStore(where we store all users) until this method is done.  
+Then defer unlock()  method ensures that the lock is released automatically when the method finishes, even if something goes wrong.
