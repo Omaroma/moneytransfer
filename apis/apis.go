@@ -48,6 +48,11 @@ func Transfer(c *gin.Context) {
 		return
 	}
 
+	if senderId == receiverId {
+		c.String(http.StatusBadRequest, "you can not transfer to yourself")
+		return
+	}
+
 	amount, _ := strconv.ParseFloat(c.Query("amount"), 64)
 	if amount <= 0 {
 		c.String(http.StatusBadRequest, "please enter transfer amount")
